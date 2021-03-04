@@ -1,14 +1,13 @@
-# Template Extension Specification
+# Versioning Indicators Extension Specification
 
-- **Title:** Template
-- **Identifier:** <https://stac-extensions.github.io/template/v1.0.0/schema.json>
-- **Field Name Prefix:** template
+- **Title:** Versioning Indicators
+- **Identifier:** <https://stac-extensions.github.io/version/v1.0.0/schema.json>
+- **Field Name Prefix:** -
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @your-gh-handles @person2
+- **Owner**: @m-mohr
 
-This document explains the Template Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
-This is the place to add a short introduction.
+This extension allows to version STAC Collections and STAC Items. Therefore, it also allows to deprecate legacy versions. Only fields and possible link relation types are defined in this extension, but it does NOT suggest any versioning best practices to structure static or dynamic catalogs. Instead check the [Versioning Best Practices for Catalogs](https://github.com/radiantearth/stac-spec/tree/master/best-practices.md#versioning-for-catalogs).
 
 - Examples:
   - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
@@ -18,33 +17,23 @@ This is the place to add a short introduction.
 
 ## Item Properties and Collection Fields
 
-| Field Name           | Type                      | Description |
-| -------------------- | ------------------------- | ----------- |
-| template:new_field   | string                    | **REQUIRED**. Describe the required field... |
-| template:xyz         | [XYZ Object](#xyz-object) | Describe the field... |
-| template:another_one | \[number]                 | Describe the field... |
+For Items, the fields are placed in the `properties`. For Collections, the fields are placed on the top level of the Collection.
 
-### Additional Field Information
-
-#### template:new_field
-
-This is a much more detailed description of the field `template:new_field`...
-
-### XYZ Object
-
-This is the introduction for the purpose and the content of the XYZ Object...
-
-| Field Name  | Type   | Description |
-| ----------- | ------ | ----------- |
-| x           | number | **REQUIRED**. Describe the required field... |
-| y           | number | **REQUIRED**. Describe the required field... |
-| z           | number | **REQUIRED**. Describe the required field... |
+| Field Name | Type    | Description |
+| ---------- | ------- | ----------- |
+| version    | string  | **REQUIRED**. Version of the Collection or Item. |
+| deprecated | boolean | Specifies that the Collection or Item is deprecated with the potential to be removed. Defaults to `false`. It should be transitioned out of usage as soon as possible and users should refrain from using it in new projects. A link with relation type `latest-version` SHOULD be added to the links and MUST refer to the resource that can be used instead. |
 
 ## Relation types
 
-The following types should be used as applicable `rel` types in the
-[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
+The following types should be used as applicable `rel` types for the [Link Object](https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md#link-object) to reference the latest version, the predecessor version and successor versions. These are all following [RFC 5829](https://tools.ietf.org/html/rfc5829).
 
 | Type                | Description |
 | ------------------- | ----------- |
-| fancy-rel-type      | This link points to a fancy resource. |
+| latest-version      | This link points to a resource containing the latest (e.g., current) version. |
+| predecessor-version | This link points to a resource containing the predecessor version in the version history. |
+| successor-version   | This link points to a resource containing the successor version in the version history. |
+
+## Implementations
+
+None yet, still in proposal stage.
