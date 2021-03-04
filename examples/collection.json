@@ -1,71 +1,51 @@
 {
-  "stac_version": "1.0.0-rc.1",
+  "stac_version": "1.0.0-beta.2",
   "stac_extensions": [
-    "collection-assets",
-    "item-assets",
-    "https://stac-extensions.github.io/template/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/version/v1.0.0/schema.json"
   ],
+  "id": "merraclim",
   "type": "Collection",
-  "id": "collection",
-  "title": "A title",
-  "description": "A description",
-  "license": "Apache-2.0",
+  "title": "MERRAclim",
+  "description": "A high-resolution global dataset of remotely sensed bioclimatic variables for ecological modelling.",
+  "license": "CC0-1.0",
+  "version": "1",
+  "deprecated": true,
   "extent": {
     "spatial": {
       "bbox": [
         [
-          172.9,
-          1.3,
-          173,
-          1.4
+          -180,
+          -90,
+          180,
+          90
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2015-06-23T00:00:00Z",
-          null
+          "1980-01-01T00:00:00Z",
+          "2009-12-31T23:59:59Z"
         ]
       ]
     }
   },
-  "template:new_field": "test",
-  "template:xyz": {
-    "x": 1,
-    "y": 2,
-    "z": 3
-  },
-  "template:another_one": [
-    1,
-    2,
-    3
-  ],
-  "assets": {
-    "example": {
-      "href": "https://example.com/examples/file.xyz",
-      "template:new_field": "test"
-    }
-  },
-  "item_assets": {
-    "data": {
-      "template:new_field": "test"
-    }
-  },
-  "summaries": {
-    "datetime": {
-      "minimum": "2015-06-23T00:00:00Z",
-      "maximum": "2019-07-10T13:44:56Z"
-    }
-  },
   "links": [
     {
-      "href": "https://example.com/examples/collection.json",
-      "rel": "self"
+      "rel": "self",
+      "href": "https://datadryad.org/resource/doi:10.5061/dryad.s2v81/v1/collection.json"
     },
     {
-      "href": "https://example.com/examples/item.json",
-      "rel": "item"
+      "rel": "item",
+      "href": "https://datadryad.org/resource/doi:10.5061/dryad.s2v81/v1/item.json"
+    },
+    {
+      "rel": "root",
+      "href": "https://datadryad.org/resource/doi:10.5061/dryad.s2v81/catalog.json"
+    },
+    {
+      "rel": "latest-version",
+      "href": "https://datadryad.org/resource/doi:10.5061/dryad.s2v81/v2/collection.json"
     }
   ]
 }
