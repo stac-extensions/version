@@ -9,11 +9,7 @@
       "allOf": [
         {
           "type": "object",
-          "required": [
-            "type",
-            "properties",
-            "assets"
-          ],
+          "required": ["type", "properties", "assets"],
           "properties": {
             "type": {
               "const": "Feature"
@@ -22,9 +18,7 @@
               "allOf": [
                 {
                   "$comment": "Require fields here for item properties.",
-                  "required": [
-                    "template:new_field"
-                  ]
+                  "required": ["version"]
                 },
                 {
                   "$ref": "#/definitions/fields"
@@ -49,9 +43,8 @@
       "allOf": [
         {
           "type": "object",
-          "required": [
-            "type"
-          ],
+          "required": ["type", "version"],
+
           "properties": {
             "type": {
               "const": "Collection"
@@ -82,57 +75,34 @@
   "definitions": {
     "stac_extensions": {
       "type": "object",
-      "required": [
-        "stac_extensions"
-      ],
+      "required": ["stac_extensions"],
       "properties": {
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://stac-extensions.github.io/template/v1.0.0/schema.json"
+            "const": "https://stac-extensions.github.io/version/v1.0.0/schema.json"
           }
         }
       }
     },
     "fields": {
-      "$comment": "Add your new fields here. Don't require them here, do that above in the item schema.",
       "type": "object",
       "properties": {
-        "template:new_field": {
-          "type": "string"
+        "version": {
+          "type": "string",
+          "title": "Version"
         },
-        "template:xyz": {
-          "type": "object",
-          "required": [
-            "x",
-            "y",
-            "z"
-          ],
-          "properties": {
-            "x": {
-              "type": "number"
-            },
-            "y": {
-              "type": "number"
-            },
-            "z": {
-              "type": "number"
-            }
-          }
-        }, 
-        "template:another_one": {
-          "type": "array", 
-          "items": {
-            "type": "number"
-          }
+        "deprecated": {
+          "type": "boolean",
+          "title": "Deprecated",
+          "default": false
         }
       },
       "patternProperties": {
-        "^(?!template:)": {
-          "$comment": "Above, change `template` to the prefix of this extension",
-        }
+        "^(?!version:)": {}
       },
       "additionalProperties": false
     }
   }
 }
+
