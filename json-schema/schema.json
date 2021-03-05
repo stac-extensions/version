@@ -1,15 +1,19 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://stac-extensions.github.io/template/v1.0.0/schema.json#",
-  "title": "Template Extension",
-  "description": "STAC Template Extension for STAC Items and STAC Collections.",
+  "title": "Versioning Indicators Extension",
+  "description": "STAC Versioning Indicators Extension for STAC Items and STAC Collections.",
   "oneOf": [
     {
       "$comment": "This is the schema for STAC Items.",
       "allOf": [
         {
           "type": "object",
-          "required": ["type", "properties", "assets"],
+          "required": [
+            "type",
+            "properties",
+            "assets"
+          ],
           "properties": {
             "type": {
               "const": "Feature"
@@ -18,7 +22,9 @@
               "allOf": [
                 {
                   "$comment": "Require fields here for item properties.",
-                  "required": ["version"]
+                  "required": [
+                    "version"
+                  ]
                 },
                 {
                   "$ref": "#/definitions/fields"
@@ -43,8 +49,10 @@
       "allOf": [
         {
           "type": "object",
-          "required": ["type", "version"],
-
+          "required": [
+            "type",
+	    "version"
+          ],
           "properties": {
             "type": {
               "const": "Collection"
@@ -75,7 +83,9 @@
   "definitions": {
     "stac_extensions": {
       "type": "object",
-      "required": ["stac_extensions"],
+      "required": [
+        "stac_extensions"
+      ],
       "properties": {
         "stac_extensions": {
           "type": "array",
@@ -97,11 +107,7 @@
           "title": "Deprecated",
           "default": false
         }
-      },
-      "patternProperties": {
-        "^(?!version:)": {}
-      },
-      "additionalProperties": false
+      }
     }
   }
 }

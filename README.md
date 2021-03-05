@@ -6,10 +6,11 @@
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
 - **Owner**: @m-mohr
+- **History**: [Prior to March 2, 2021](https://github.com/radiantearth/stac-spec/commits/v1.0.0-rc.1/extensions/version)
 
-This extension allows to version STAC Collections and STAC Items. Therefore, it also allows to deprecate legacy versions.\
-Only fields and possible link relation types are defined in this extension, but it does NOT suggest any versioning best practices to\
-structure static or dynamic catalogs.
+This extension allows to version STAC Collections and STAC Items. Therefore, it also allows to deprecate legacy versions.
+Only fields and possible link relation types are defined in this extension,
+but it does NOT suggest any versioning best practices to structure static or dynamic catalogs.
 Instead check the [Versioning Best Practices for Catalogs](https://github.com/radiantearth/stac-spec/tree/master/best-practices.md#versioning-for-catalogs).
 
 - Examples:
@@ -30,7 +31,7 @@ For Items, the fields are placed in the `properties`. For Collections, the field
 ## Relation types
 
 The following types should be used as applicable `rel` types for the\
- [Link Object](https://github.com/radiantearth/stac-spec/blob/master/item-spec/item-spec.md#link-object) to reference the latest version, \
+ [Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object) to reference the latest version,
  the predecessor version and successor versions. These are all following [RFC 5829](https://tools.ietf.org/html/rfc5829).
 
 | Type                | Description |
@@ -38,7 +39,3 @@ The following types should be used as applicable `rel` types for the\
 | latest-version      | This link points to a resource containing the latest (e.g., current) version. |
 | predecessor-version | This link points to a resource containing the predecessor version in the version history. |
 | successor-version   | This link points to a resource containing the successor version in the version history. |
-
-## Implementations
-
-None yet, still in proposal stage.
