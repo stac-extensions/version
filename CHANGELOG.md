@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[v1.0.0] - 2021-03-08
+## [v1.0.0] - 2021-03-08
 
 Release as own extension, see [previous history](https://github.com/radiantearth/stac-spec/commits/v1.0.0-rc.1/extensions/version)
 
