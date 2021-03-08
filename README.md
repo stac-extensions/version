@@ -6,7 +6,6 @@
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
 - **Owner**: @m-mohr
-- **History**: [Prior to March 2, 2021](https://github.com/radiantearth/stac-spec/commits/v1.0.0-rc.1/extensions/version)
 
 This extension allows to version STAC Collections and STAC Items. Therefore, it also allows to deprecate legacy versions.
 Only fields and possible link relation types are defined in this extension,
