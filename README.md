@@ -7,6 +7,9 @@
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
 - **Owner**: @m-mohr
 
+This document explains the Versioning Indicators Extension to the
+[SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
+
 This extension allows to version STAC Collections and STAC Items. Therefore, it also allows to deprecate legacy versions.
 Only fields and possible link relation types are defined in this extension,
 but it does NOT suggest any versioning best practices to structure static or dynamic catalogs.
@@ -38,3 +41,34 @@ The following types should be used as applicable `rel` types for the\
 | latest-version      | This link points to a resource containing the latest (e.g., current) version. |
 | predecessor-version | This link points to a resource containing the predecessor version in the version history. |
 | successor-version   | This link points to a resource containing the successor version in the version history. |
+
+## Contributing
+
+All contributions are subject to the
+[STAC Specification Code of Conduct](https://github.com/radiantearth/stac-spec/blob/master/CODE_OF_CONDUCT.md).
+For contributions, please follow the
+[STAC specification contributing guide](https://github.com/radiantearth/stac-spec/blob/master/CONTRIBUTING.md) Instructions
+for running tests are copied here for convenience.
+
+### Running tests
+
+The same checks that run as checks on PR's are part of the repository and can be run locally to verify that changes are valid. 
+To run tests locally, you'll need `npm`, which is a standard part of any [node.js installation](https://nodejs.org/en/download/).
+
+First you'll need to install everything with npm once. Just navigate to the root of this repository and on 
+your command line run:
+```bash
+npm install
+```
+
+Then to check markdown formatting and test the examples against the JSON schema, you can run:
+```bash
+npm test
+```
+
+This will spit out the same texts that you see online, and you can then go and fix your markdown or examples.
+
+If the tests reveal formatting problems with the examples, you can fix them with:
+```bash
+npm run format-examples
+```
