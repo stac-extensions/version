@@ -5,8 +5,11 @@
   "description": "STAC Versioning Indicators Extension for STAC Items and STAC Collections.",
   "oneOf": [
     {
-      "$comment": "This is the schema for STAC Items.",
+      "$comment": "This is the schema for STAC Items. Remove this object if this extension only applies to Collections.",
       "allOf": [
+        {
+          "$ref": "#/definitions/stac_extensions"
+        },
         {
           "type": "object",
           "required": [
@@ -32,50 +35,109 @@
               ]
             },
             "assets": {
+              "$comment": "This validates the fields in Item Assets, but does not require them.",
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/definitions/fields"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "$comment": "This is the schema for STAC Collections.",
+      "type": "object",
+      "allOf": [
+        {
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "const": "Collection"
             }
           }
         },
         {
           "$ref": "#/definitions/stac_extensions"
         }
-      ]
-    },
-    {
-      "$comment": "This is the schema for STAC Collections.",
-      "allOf": [
+      ],
+      "anyOf": [
         {
-          "type": "object",
+          "$comment": "This is the schema for the top-level fields in a Collection. Remove this if this extension does not define top-level fields for Collections.",
+          "allOf": [
+            {
+              "$comment": "Require fields here for Collections (top-level).",
+              "required": [
+                "version"
+              ]
+            },
+            {
+              "$ref": "#/definitions/fields"
+            }
+          ]
+        },
+        {
+          "$comment": "This validates the fields in Collection Assets, but does not require them.",
           "required": [
-            "type",
-	    "version"
+            "assets"
           ],
           "properties": {
-            "type": {
-              "const": "Collection"
-            },
             "assets": {
               "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/fields"
-              }
-            },
-            "item_assets": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/fields"
+              "not": {
+                "additionalProperties": {
+                  "not": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/require_any_field"
+                      },
+                      {
+                        "$ref": "#/definitions/fields"
+                      }
+                    ]
+                  }
+                }
               }
             }
           }
         },
         {
-          "$ref": "#/definitions/stac_extensions"
+          "$comment": "This is the schema for the fields in Item Asset Definitions. It doesn't require any fields.",
+          "required": [
+            "item_assets"
+          ],
+          "properties": {
+            "item_assets": {
+              "type": "object",
+              "not": {
+                "additionalProperties": {
+                  "not": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/require_any_field"
+                      },
+                      {
+                        "$ref": "#/definitions/fields"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
         },
         {
-          "$ref": "#/definitions/fields"
+          "$comment": "This is the schema for the fields in Summaries. By default, only checks the existance of the properties, but not the schema of the summaries.",
+          "required": [
+            "summaries"
+          ],
+          "properties": {
+            "summaries": {
+              "$ref": "#/definitions/require_any_field"
+            }
+          }
         }
       ]
     }
@@ -94,6 +156,13 @@
           }
         }
       }
+    },
+    "require_any_field": {
+      "$comment": "Please list all fields here so that we can force the existance of one of them in other parts of the schemas.",
+      "anyOf": [
+        {"required": ["version"]},
+        {"required": ["deprecated"]}
+      ]
     },
     "fields": {
       "type": "object",
