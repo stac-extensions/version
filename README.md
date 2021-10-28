@@ -21,14 +21,16 @@ Instead check the [Versioning Best Practices for Catalogs](https://github.com/ra
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
-## Item Properties and Collection Fields
+## Item Properties and Asset or Collection Fields
 
-For Items, the fields are placed in the `properties`. For Collections, the fields are placed on the top level of the Collection.
+For Items, the fields are placed in the `properties`. For Collections and Asset Objects, the fields are placed on the top level of the Collection or Asset Object.
 
 | Field Name | Type    | Description |
 | ---------- | ------- | ----------- |
 | version    | string  | **REQUIRED**. Version of the Collection or Item. |
 | deprecated | boolean | Specifies that the Collection or Item is deprecated with the potential to be removed. Defaults to `false`. It should be transitioned out of usage as soon as possible and users should refrain from using it in new projects. A link with relation type `latest-version` SHOULD be added to the links and MUST refer to the resource that can be used instead. |
+
+These fields have different meaning depending on where they are used. When used as an Item properties or top-level Collection field, they refer to the version or deprecation of the metadata (e.g. Item or Collection). When used in an Asset Object, they refer to the version or deprecation of the actual data linked to in the Asset Object.
 
 ## Relation types
 
