@@ -32,7 +32,8 @@ Asset Object.
 | deprecated | boolean | Specifies that the Collection or Item is deprecated with the potential to be removed. Defaults to `false`. It should be transitioned out of usage as soon as possible and users should refrain from using it in new projects. A link with relation type `latest-version` SHOULD be added to the links and MUST refer to the resource that can be used instead. |
 
 These fields have different meaning depending on where they are used. When used as an Item properties or top-level Collection field, they refer to
-the version or deprecation of all data referenced in the Item or Collection. When used in an Asset Object, they refer to the version or deprecation
+the version or deprecation of all data referenced in the Item or Collection, which may include the metadata itself.
+When used in an Asset Object, they refer to the version or deprecation
 of the particular data asset linked to in the Asset Object.
 
 ## Relation types
