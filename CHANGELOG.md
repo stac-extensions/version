@@ -6,14 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.1.0]
+
 ### Added
+
+- Allow usage in Catalogs.
+- Explicitly support usage in assets.
 
 ### Changed
 
-### Deprecated
+- The `version` field is not required any longer.
 
-### Removed
+## [v1.0.0]
 
-### Fixed
+- First release
 
-[Unreleased]: <https://github.com/stac-extensions/template/compare/v1.0.0...HEAD>
+[Unreleased]: <https://github.com/stac-extensions/version/compare/v1.1.0...HEAD>
+[v1.1.0]: <https://github.com/stac-extensions/version/compare/v1.0.0...v1.1.0>
+[v1.0.0]: <https://github.com/stac-extensions/version/tree/v1.0.0>

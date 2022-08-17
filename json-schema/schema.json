@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://stac-extensions.github.io/template/v1.0.0/schema.json#",
+  "$id": "https://stac-extensions.github.io/version/v1.1.0/schema.json#",
   "title": "Versioning Indicators Extension",
   "description": "STAC Versioning Indicators Extension for STAC Items and STAC Collections.",
   "oneOf": [
@@ -19,17 +19,7 @@
               "const": "Feature"
             },
             "properties": {
-              "allOf": [
-                {
-                  "$comment": "Require fields here for item properties.",
-                  "required": [
-                    "version"
-                  ]
-                },
-                {
-                  "$ref": "#/definitions/fields"
-                }
-              ]
+              "$ref": "#/definitions/fields"
             },
             "assets": {
               "type": "object",
@@ -50,8 +40,7 @@
         {
           "type": "object",
           "required": [
-            "type",
-	    "version"
+            "type"
           ],
           "properties": {
             "type": {
@@ -78,6 +67,28 @@
           "$ref": "#/definitions/fields"
         }
       ]
+    },
+    {
+      "$comment": "This is the schema for STAC Catalog.",
+      "allOf": [
+        {
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "const": "Catalog"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
+        },
+        {
+          "$ref": "#/definitions/fields"
+        }
+      ]
     }
   ],
   "definitions": {
@@ -90,7 +101,7 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://stac-extensions.github.io/version/v1.0.0/schema.json"
+            "const": "https://stac-extensions.github.io/version/v1.1.0/schema.json"
           }
         }
       }

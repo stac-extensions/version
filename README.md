@@ -1,7 +1,7 @@
 # Versioning Indicators Extension Specification
 
 - **Title:** Versioning Indicators
-- **Identifier:** <https://stac-extensions.github.io/version/v1.0.0/schema.json>
+- **Identifier:** <https://stac-extensions.github.io/version/v1.1.0/schema.json>
 - **Field Name Prefix:** -
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
@@ -19,20 +19,26 @@ Instead check the [Versioning Best Practices for Catalogs](https://github.com/ra
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
-## Item Properties and Collection Fields
+## Fields
 
-For Items, the fields are placed in the `properties`. For Collections, the fields are placed on the top level of the Collection.
+The fields in the table below can be used in these parts of STAC documents:
+- [x] Catalogs
+- [x] Collections
+- [x] Item Properties (incl. Summaries in Collections)
+- [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
+- [ ] Links
 
 | Field Name | Type    | Description |
 | ---------- | ------- | ----------- |
-| version    | string  | **REQUIRED**. Version of the Collection or Item. |
-| deprecated | boolean | Specifies that the Collection or Item is deprecated with the potential to be removed. Defaults to `false`. It should be transitioned out of usage as soon as possible and users should refrain from using it in new projects. A link with relation type `latest-version` SHOULD be added to the links and MUST refer to the resource that can be used instead. |
+| version    | string  | Version of the context this fields is used in (e.g. Asset or Collection). |
+| deprecated | boolean | Specifies that the context this field is used in (e.g. Asset or Collection) is deprecated with the potential to be removed. Defaults to `false`. It should be transitioned out of usage as soon as possible and users should refrain from using it in new projects. A link with relation type `latest-version` SHOULD be added to the links and MUST refer to the resource that can be used instead. |
 
 ## Relation types
 
-The following types should be used as applicable `rel` types for the\
- [Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object) to reference the latest version,
- the predecessor version and successor versions. These are all following [RFC 5829](https://tools.ietf.org/html/rfc5829).
+The following types should be used as applicable `rel` types for the
+[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object)
+to reference the latest version, the predecessor version and successor versions.
+These are all following [RFC 5829](https://tools.ietf.org/html/rfc5829).
 
 | Type                | Description |
 | ------------------- | ----------- |
