@@ -8,6 +8,9 @@
       "$comment": "This is the schema for STAC Items.",
       "allOf": [
         {
+          "$ref": "#/definitions/stac_extensions"
+        },
+        {
           "type": "object",
           "required": [
             "type",
@@ -28,31 +31,38 @@
               }
             }
           }
-        },
-        {
-          "$ref": "#/definitions/stac_extensions"
         }
       ]
     },
     {
       "$comment": "This is the schema for STAC Collections.",
+      "type": "object",
       "allOf": [
         {
-          "type": "object",
           "required": [
             "type"
           ],
           "properties": {
             "type": {
               "const": "Collection"
-            },
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
+        },
+        {
+          "$comment": "This is the schema for the top-level fields in a Collection.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/fields"
+            }
+          ]
+        },
+        {
+          "$comment": "This validates the fields in Collection Assets.",
+          "properties": {
             "assets": {
-              "type": "object",
-              "additionalProperties": {
-                "$ref": "#/definitions/fields"
-              }
-            },
-            "item_assets": {
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/definitions/fields"
@@ -61,10 +71,15 @@
           }
         },
         {
-          "$ref": "#/definitions/stac_extensions"
-        },
-        {
-          "$ref": "#/definitions/fields"
+          "$comment": "This is the schema for the fields in Item Asset Definitions.",
+          "properties": {
+            "item_assets": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/fields"
+              }
+            }
+          }
         }
       ]
     },
