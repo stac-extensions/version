@@ -132,6 +132,11 @@
           "type": "boolean",
           "title": "Deprecated",
           "default": false
+        },
+        "experimental": {
+          "type": "boolean",
+          "title": "Experimental",
+          "default": false
         }
       }
     }
