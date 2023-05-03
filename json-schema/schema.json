@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://stac-extensions.github.io/version/v1.1.0/schema.json#",
+  "$id": "https://stac-extensions.github.io/version/v1.2.0/schema.json#",
   "title": "Versioning Indicators Extension",
   "description": "STAC Versioning Indicators Extension for STAC Items and STAC Collections.",
   "oneOf": [
@@ -116,7 +116,7 @@
         "stac_extensions": {
           "type": "array",
           "contains": {
-            "const": "https://stac-extensions.github.io/version/v1.1.0/schema.json"
+            "const": "https://stac-extensions.github.io/version/v1.2.0/schema.json"
           }
         }
       }
@@ -131,6 +131,11 @@
         "deprecated": {
           "type": "boolean",
           "title": "Deprecated",
+          "default": false
+        },
+        "experimental": {
+          "type": "boolean",
+          "title": "Experimental",
           "default": false
         }
       }

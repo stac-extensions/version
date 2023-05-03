@@ -1,7 +1,7 @@
 # Versioning Indicators Extension Specification
 
 - **Title:** Versioning Indicators
-- **Identifier:** <https://stac-extensions.github.io/version/v1.1.0/schema.json>
+- **Identifier:** <https://stac-extensions.github.io/version/v1.2.0/schema.json>
 - **Field Name Prefix:** -
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Candidate
@@ -30,10 +30,11 @@ The fields in the table below can be used in these parts of STAC documents:
 - [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
 - [ ] Links
 
-| Field Name | Type    | Description |
-| ---------- | ------- | ----------- |
-| version    | string  | Version of the context this fields is used in (e.g. Asset or Collection). |
-| deprecated | boolean | Specifies that the context this field is used in (e.g. Asset or Collection) is deprecated with the potential to be removed. Defaults to `false`. It should be transitioned out of usage as soon as possible and users should refrain from using it in new projects. A link with relation type `latest-version` SHOULD be added to the links and MUST refer to the resource that can be used instead. |
+| Field Name   | Type    | Description |
+| ------------ | ------- | ----------- |
+| version      | string  | Version of the context this fields is used in (e.g. Asset or Collection). |
+| deprecated   | boolean | Specifies that the context this field is used in (e.g. Asset or Collection) is deprecated with the potential to be removed. Defaults to `false`. It should be transitioned out of usage as soon as possible and users should refrain from using it in new projects. A link with relation type `latest-version` SHOULD be added to the links and MUST refer to the resource that can be used instead. |
+| experimental | boolean | Specifies that the context this field is used in (e.g. Asset or Collection) is experimental with the potential to break or be unstable. Defaults to `false`. |
 
 These fields have different meaning depending on where they are used. When used as an Item properties or top-level Collection field, they refer to
 the version or deprecation of all data referenced in the Item or Collection, which may include the metadata itself.
