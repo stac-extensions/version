@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Fields are also allowed for Links
+- New relation types: `has-version` and `is-version-of`
 
 ### Fixed
 
