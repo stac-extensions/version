@@ -57,8 +57,14 @@ see the [mapping to DataCite](#mapping-to-datacite) below.
 | predecessor-version | One or multiple links can point to STAC resources that are predecessor versions in the version history. |
 | successor-version   | One or multiple links can point to STAC resources that are successor versions in the version history. |
 | version-history     | This link points to a version history or changelog. This can be for example a Markdown file with the corresponding media type, or a STAC Catalog or Collection. |
-| has-version         | One or multiple links can point to resources that are versions of this resource. Typically used on an overarching entity (e.g., a canonical or version-independent resource) that groups versioned resources. |
-| is-version-of       | This link points to the overarching entity (e.g., a canonical or version-independent resource) of which this resource is a version. This is the reverse of `has-version`. |
+| has-version         | One or multiple links can point to resources that are versions of this resource. Typically used on an overarching entity (e.g., a version-independent resource) that groups versioned resources. |
+| is-version-of       | This link points to the overarching entity (e.g., a version-independent resource) of which this resource is a version. This is the reverse of `has-version`. |
+
+Note that the `canonical` relation type as described in the
+[STAC best practices](https://github.com/radiantearth/stac-spec/blob/master/best-practices.md#using-relation-types)
+is not a versioning relation type.
+It points from a copy to the primary location of the *same* version of a resource,
+whereas `is-version-of` points to the version-independent (overarching) entity.
 
 ### Mapping to DataCite
 
