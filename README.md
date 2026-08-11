@@ -45,15 +45,43 @@ of the particular data asset linked to in the Asset Object.
 
 The following types should be used as applicable `rel` types for the
 [Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object)
-to reference the latest version, the predecessor version and successor versions.
-These are all following [RFC 5829](https://tools.ietf.org/html/rfc5829).
+to describe the relationships between the versions of a resource.
+The relation types `latest-version`, `predecessor-version`, `successor-version`, and `version-history`
+follow [RFC 5829](https://tools.ietf.org/html/rfc5829).
+The relation types `has-version` and `is-version-of` are inspired by DataCite,
+see the [mapping to DataCite](#mapping-to-datacite) below.
 
 | Type                | Description |
 | ------------------- | ----------- |
 | latest-version      | This link points to a STAC resource containing the latest (e.g., current) version. A maximum of one link can use this relation type per STAC resource. |
 | predecessor-version | One or multiple links can point to STAC resources that are predecessor versions in the version history. |
 | successor-version   | One or multiple links can point to STAC resources that are successor versions in the version history. |
-| version-history     | This link points to a version history or changelog. This can be for example a Markdown file with the corresponding media type or a STAC Catalog or Collection. |
+| version-history     | This link points to a version history or changelog. This can be for example a Markdown file with the corresponding media type, or a STAC Catalog or Collection. |
+| has-version         | One or multiple links can point to resources that are versions of this resource. Typically used on an overarching entity (e.g., a version-independent resource) that groups versioned resources. |
+| is-version-of       | This link points to the overarching entity (e.g., a version-independent resource) of which this resource is a version. This is the reverse of `has-version`. |
+
+Note that the `canonical` relation type as described in the
+[STAC best practices](https://github.com/radiantearth/stac-spec/blob/master/best-practices.md#using-relation-types)
+is not a versioning relation type.
+It points from a copy to the primary location of the *same* version of a resource,
+whereas `is-version-of` points to the version-independent (overarching) entity.
+
+### Mapping to DataCite
+
+The following table maps the relation types of this extension to the corresponding DataCite
+[relationType](https://datacite-metadata-schema.readthedocs.io/en/latest/appendices/appendix-1/relationType/) values.
+The direction of the relations is the same:
+the DataCite relationType applies to the resource that contains the link,
+and the link target corresponds to the related resource in DataCite.
+
+| STAC relation type  | DataCite relationType |
+| ------------------- | --------------------- |
+| latest-version      | n/a                   |
+| predecessor-version | `IsNewVersionOf`      |
+| successor-version   | `IsPreviousVersionOf` |
+| version-history     | n/a                   |
+| has-version         | `HasVersion`          |
+| is-version-of       | `IsVersionOf`         |
 
 ## Contributing
 
